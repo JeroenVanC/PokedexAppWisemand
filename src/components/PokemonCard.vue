@@ -65,6 +65,7 @@ export default {
         margin: 1rem 0;
         padding: 1rem;
         justify-content: space-between;
+        cursor: pointer;
     }
     .pokemonCardContainer img {
         width: 100px;

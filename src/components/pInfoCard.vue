@@ -47,7 +47,8 @@ export default {
         width: 50%;
         display: flex;
         flex-direction: column;
-        justify-content: end;        
+        justify-content: end; 
+        cursor: pointer;       
     }
 
     .pInfo__container .text {
