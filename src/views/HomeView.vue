@@ -1,5 +1,5 @@
 <template>
-  <h1>Pokédex</h1>
+  <h1 class="title">Pokédex</h1>
 
   <div class="searchBar">
     <button>
@@ -52,11 +52,17 @@ export default {
 body {
   padding: 2rem 2rem;
 }
+.title {
+  font-size: 2.6rem;
+}
+
 .searchBar {
   background: #EFF0F1;
   border-radius: 10px;
   display: flex;
   overflow: hidden;
+  font-size: 1.4rem;
+  padding: 5px 5px;
 }
 
 .searchBar button {

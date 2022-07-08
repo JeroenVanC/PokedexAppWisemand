@@ -109,10 +109,7 @@ export default {
         border-radius: 100px;
     }
 
-
-    .pokemonCardContainer svg rect {
-    }
-
+    /* colors for element types */
     .typeIcon.grass {
         background-color: rgba(149, 194, 77, 1);
     }
