@@ -9,6 +9,7 @@
         </svg>
 
     </div>
+
 </template>
 
 <script>
@@ -16,10 +17,14 @@ export default {
     props: ['title', 'amount', 'color'],
     data() {
         return {
-            gradient: ""
+            gradient: "",
+            pokemons: []
         }
     },
     mounted() {
+        
+
+        // check for background gradient
         if (this.color === "green") {
             this.gradient = "pInfo__container-green"
         }

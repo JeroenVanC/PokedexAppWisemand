@@ -15,21 +15,42 @@
       <pInfoCard title="Favorieten" amount="12" color="green"></pInfoCard>
   </div>
 
+  <div v-for="pokemon in pokemons" :key="pokemon.id">
+    <PokemonCard :name="pokemon.name" :img="pokemon.sprites.front_default" :num="pokemon.id" :pokeTypes="pokemon.types" ></PokemonCard>
+    <!-- <p>{{ pokemon.name }}</p>
+    <img :src="pokemon.sprites.front_default" alt=""> -->
+  </div>
 </template>
 
 <script>
 import pInfoCard from '../components/pInfoCard.vue'
+import PokemonCard from '../components/PokemonCard.vue'
+
 export default {
   name: 'HomeView',
   components: {
-    pInfoCard
+    pInfoCard,
+    PokemonCard
+  },
+  data(){
+    return {
+      pokemons: []
+    }
+  },
+  mounted() {
+    // fetch pokemons
+    // fetch pokemon data
+        fetch("https://stoplight.io/mocks/appwise-be/pokemon/57519009/pokemon")
+            .then(res => res.json())
+            .then(data => this.pokemons = data)
+            .catch(err => console.log(err.message))
   }
 }
 </script>
 
 <style>
 body {
-  padding: 0 .7rem;
+  padding: 2rem 2rem;
 }
 .searchBar {
   background: #EFF0F1;
