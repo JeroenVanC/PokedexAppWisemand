@@ -110,7 +110,7 @@ export default {
 
     .typeIcon {
         text-align: center;
-        padding: 3px 10px;
+        padding: 1px 10px;
         color: white;
         background: #4592C3;
         border-radius: 100px;

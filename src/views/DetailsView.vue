@@ -22,19 +22,53 @@
             </a>
         </div>
 
-        <p>INFO</p>
-        <div class="aboutContainer">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos molestias, molestiae dicta doloribus iure quis sequi in! Ad, nulla tempora.</p>
-            <p v-for="t in pokemon.types" :key="t.slot">{{ t.type.name }}</p>
-            <p>Nr: {{ pokemon.id }}</p>
-            <p>Hoogte: {{ pokemon.height }}m</p>
+        <div class="shadowContainer">
+            <div class="bottemShadow"></div>
         </div>
-        <p>STATISTIEKEN</p>
+
+        <h3 class="cardTitle">INFO</h3>
         <div class="aboutContainer">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos molestias, molestiae dicta doloribus iure quis sequi in! Ad, nulla tempora.</p>
-            <p v-for="t in pokemon.types" :key="t.slot">{{ t.type.name }}</p>
-            <p>Nr: {{ pokemon.id }}</p>
-            <p>Hoogte: {{ pokemon.height }}m</p>
+            <div class="infoGrid">
+                <p class="leftsideP">Type</p>
+                <div class="moreOptions">
+                    <p v-for="t in pokemon.types" :key="t.slot" class="typeIcon" :class="t.type.name">{{ t.type.name }}</p>
+                </div>
+
+                <p class="leftsideP">Nummer</p>
+                <p>{{ formatNumber }}</p>
+
+                <p class="leftsideP">Hoogte</p>
+                <p>{{ pokemon.height }}m</p>
+
+                <p class="leftsideP">Gewicht</p>
+                <p>{{ pokemon.weight }} kg</p>
+
+                <p class="leftsideP">Categorie</p>
+                <p>Not in API</p>
+
+                <p class="leftsideP">Geslacht</p>
+                <p>Not in API</p>
+
+                <p class="leftsideP">Vaardigheden</p>
+                <div class="moreOptions">
+                    <p v-for="(skill, id) in pokemon.abilities" :key="id">
+                        {{ skill.ability.name }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <H3 class="cardTitle">STATISTIEKEN</h3>
+        <div class="aboutContainer">
+                <div class="statsGrid" v-for="(stat, id) in pokemon.stats" :key="id">
+                    <p class="leftsideP">{{ stat.stat.name }}</p>
+                    <p>{{stat.base_stat}}</p>
+                    <div class="progBarContainer">
+                        <!-- <p>{{ formatProgBarWidth(stat.base_stat) }}</p> -->
+                        <div v-if="stat.base_stat > 50" class="progBar" :style="{background: greenProgBar , width : formatProgBarWidth(stat.base_stat)}"></div>
+                        <div v-else class="progBar" :style="{background: redProgBar, width : formatProgBarWidth(stat.base_stat)}"></div>
+                    </div>
+                </div>
         </div>
     </div>
 </template>
@@ -47,7 +81,9 @@ export default {
             pokemon: null,
             cardInfo: {},
             isFav: false,
-            imageSource: ""
+            imageSource: "",
+            greenProgBar: "rgba(112, 193, 143, 1)",
+            redProgBar:"rgba(223, 101, 99, 1)"
         }
     },
     methods: {
@@ -69,12 +105,20 @@ export default {
                     this.isFav = true
                 }
             }
-        }
+        },
+        formatProgBarWidth(t){
+           return t + "%"
+       }
+        
     },
     computed: {
         setBackgroundColor(){
             return  this.pokemon.types[0].type.name
-        }
+        },
+        formatNumber() {
+           return String(this.pokemon.id).padStart(3, 0);
+       },
+
     },
     mounted() {
         // fetch pokemons
@@ -148,6 +192,10 @@ export default {
         fill: rgb(186, 91, 119);
     }
 
+    .cardTitle {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
     .pokemonImage {
         display: flex;
         align-items: center;
@@ -157,11 +205,61 @@ export default {
         max-width: 300px;
     }
 
+    .shadowContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+    .bottemShadow {
+        position: absolute;
+        top: -40px;
+        width: 300px;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.6);
+        filter: blur(15px);
+        border-radius: 100%;
+    }
+
     .aboutContainer {
         background: #FFFFFF;
         box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.04);
         border-radius: 10px;
         color: rgba(0, 0, 0, 1);
         padding: 2rem;
+    }
+    .infoGrid {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: .5fr 1fr;
+        grid-row-gap: 15px;
+    }
+
+    .leftsideP {
+        color: rgba(172, 178, 193, 1);
+    }
+
+    .infoGrid .moreOptions {
+        display: flex;
+        gap: 10px;
+    }
+
+    .statsGrid {
+        display: grid;
+        grid-template-columns: .5fr .2fr 1fr;
+        grid-row-gap: 15px;
+        align-items: center;
+    }
+
+    .progBarContainer{
+        width: 100%;
+        height: 5px;
+        background: rgb(229, 231, 235);
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .progBar {
+        width: 50%;
+        height: 10px;
     }
 </style>
