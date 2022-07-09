@@ -9,9 +9,12 @@
             </div>
         </div>
         <h1>Favorieten</h1>
-        <div v-for="(favo, id) in favorites" :key="id">
-            <PokemonCard :name="favo.name" :img="favo.img" :num="favo.num" :pokeTypes="favo.pokeTypes" ></PokemonCard>
-        </div>
+            <div v-for="(favo, id) in favorites" :key="id">
+                <router-link class="routerLink_pokeCard" :to="{ name: 'details', params: { name: favo.name, id: favo.num}}">
+                    <PokemonCard :name="favo.name" :img="favo.img" :num="favo.num" :pokeTypes="favo.pokeTypes" ></PokemonCard>
+                </router-link>
+            </div>
+        
     </div>
 </template>
 

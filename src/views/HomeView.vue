@@ -26,6 +26,8 @@
 import pInfoCard from '../components/pInfoCard.vue'
 import PokemonCard from '../components/PokemonCard.vue'
 
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: 'HomeView',
   components: {
@@ -39,28 +41,25 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["loadPokemon"])
   },
   computed: {
     searchResults() {
       // If searchInput property is empty -> return a empty string
-      if (this.searchInput.length === 0) return this.pokemons;
+      if (this.searchInput.length === 0) return this.getPokemons;
       // return pokemons with names that match with
       // the searchInput string
-      return this.pokemons.filter(pokemons => pokemons.name.match(this.searchInput))
+      return this.getPokemons.filter(getPokemons => getPokemons.name.match(this.searchInput))
     },
     amountOfFavo(){
       return this.$store.state.favorites.length
-    }
+    },
+    ...mapGetters(['getPokemons'])
   },
-  mounted() {
-    // fetch pokemons
-    // fetch pokemon data
-        fetch("https://stoplight.io/mocks/appwise-be/pokemon/57519009/pokemon")
-            .then(res => res.json())
-            .then(data => this.pokemons = data)
-            .catch(err => console.log(err.message))
-
-  }
+  created() {
+  this.loadPokemon();
+  this.pokemons = this.getPokemons;
+}
 }
 </script>
 
