@@ -19,6 +19,18 @@ export default createStore({
         state.favorites.push(data)
         let uniqueItems = [...new Set(state.favorites)]
         state.favorites = uniqueItems
+    },
+    deleteFavorite(state, data){
+        let pokeNames = []
+        for (let p of state.favorites) {
+          pokeNames.push(p.name)
+        }
+        console.log(pokeNames)
+        var index = pokeNames.indexOf(data)
+        console.log(index)
+        if (index !== -1) {
+          state.favorites.splice(index, 1)
+        }
     }
   },
   actions: {

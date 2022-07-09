@@ -51,9 +51,13 @@ export default {
             this.$router.go(-1)
         },
         addFavorites() {
-            //console.log("eerste");
-            this.$store.commit("addFavorite", this.cardInfo)
-            this.checkIfFav()
+            if (this.isFav) {
+                this.$store.commit("deleteFavorite", this.cardInfo.name)
+                this.isFav = false
+            } else {
+                this.$store.commit("addFavorite", this.cardInfo)
+                this.isFav = true
+            }
         },
         checkIfFav(){
             for (let pokemonF of this.$store.state.favorites) {
