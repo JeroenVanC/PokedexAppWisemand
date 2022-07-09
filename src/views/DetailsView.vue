@@ -16,7 +16,11 @@
 
         <h1>{{ name }}</h1>
         <!-- <img :src="pokemon.sprites.front_default" :alt="name"> -->
-        <img :src="imageSource" :alt="name">
+        <div class="pokemonImage" uk-lightbox>
+            <a :href="imageSource">
+                <img :src="imageSource" :alt="name">
+            </a>
+        </div>
 
         <p>INFO</p>
         <div class="aboutContainer">
@@ -144,9 +148,13 @@ export default {
         fill: rgb(186, 91, 119);
     }
 
-
-    .detailsPage img {
-        width: 900px;
+    .pokemonImage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .pokemonImage img {
+        max-width: 300px;
     }
 
     .aboutContainer {
