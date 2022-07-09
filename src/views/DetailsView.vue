@@ -1,5 +1,5 @@
 <template>
-    <div class="detailsPage" v-if="pokemon" >
+    <div class="detailsPage" :class="setBackgroundColor" v-if="pokemon" >
         <div class="topNav">
             <div class="leftPart" @click="back">
                 <svg width="12" height="21" viewBox="0 0 12 21"  xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +68,9 @@ export default {
         }
     },
     computed: {
-
+        setBackgroundColor(){
+            return  this.pokemon.types[0].type.name
+        }
     },
     mounted() {
         // fetch pokemons
@@ -108,6 +110,14 @@ export default {
         background: linear-gradient(180deg, #7ECD8B 0%, #89E2B3 100%);
         color: white;
         padding: 1rem;
+    }
+
+    /* different backgradients */
+    .detailsPage.fire{
+        background: linear-gradient(180deg, #E68061 0%, #DBB469 100%);
+    }
+    .detailsPage.water{
+        background: linear-gradient(180deg, #6190e6 0%, #69c6db 100%);
     }
 
     .topNav {
