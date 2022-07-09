@@ -26,13 +26,19 @@ export default {
         favorites() {
             return this.$store.state.favorites
         }
+    },
+    methods: {
+        back(){
+            this.$router.go(-1)
+        }
+
     }
 }
 </script>
 
 <style>
 .favoView {
-    padding: 2rem 1rem;
+    padding: 2rem 2rem;
     background: linear-gradient(109.73deg, #65CB9A 0%, #15D0DC 100%);
     min-height: 100vh;
     color: white;

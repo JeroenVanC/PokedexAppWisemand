@@ -10,8 +10,8 @@
       <input type="text" v-model="searchInput" name="" id="" placeholder="Pokemom zoeken">
     </div>
     <div class="pinfoCar-container">
-        <pInfoCard title="Mijn team" amount="4"></pInfoCard>
-        <pInfoCard @click="$router.push('favorieten')" title="Favorieten" amount="12" color="green"></pInfoCard>
+        <pInfoCard title="Mijn team" amount="12"></pInfoCard>
+        <pInfoCard @click="$router.push('favorieten')" title="Favorieten" :amount="amountOfFavo" color="green"></pInfoCard>
 
     </div>
     <div v-for="pokemon in searchResults" :key="pokemon.id">
@@ -47,6 +47,9 @@ export default {
       // return pokemons with names that match with
       // the searchInput string
       return this.pokemons.filter(pokemons => pokemons.name.match(this.searchInput))
+    },
+    amountOfFavo(){
+      return this.$store.state.favorites.length
     }
   },
   mounted() {
