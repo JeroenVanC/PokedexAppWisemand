@@ -21,6 +21,10 @@ export default createStore({
   getters: {
   },
   mutations: {
+    addFavorite(state, data){
+      //console.log("test");
+      state.favorites.push(data)
+    }
   },
   actions: {
   },
