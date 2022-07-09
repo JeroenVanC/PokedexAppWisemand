@@ -4,7 +4,7 @@
             <img :src="img" alt="">
             <div class="leftSideText">
                 <h3>{{ name }}</h3>
-                <p>Nr. {{ formatNumber }}</p>
+                <p class="pTitle">Nr. {{ formatNumber }}</p>
             </div>
         </div>
         
@@ -66,10 +66,15 @@ export default {
         padding: 1rem;
         justify-content: space-between;
         cursor: pointer;
+        color: black;
+    }
+
+    .pokemonCardContainer .pTitle {
+        color: rgba(145, 150, 152, 1);
     }
     .pokemonCardContainer img {
-        width: 100px;
-        height: 100px;
+        width: 40px;
+        height: 40px;
         object-fit: cover;
     }
 
@@ -84,7 +89,7 @@ export default {
         height: min-content;
         align-self: start;
         margin-left: 1rem;
-        font-size: 1.2rem;
+        font-size: .9rem;
     }
     .rightSide {
         width: 50%;
@@ -92,6 +97,7 @@ export default {
         display: flex;
         align-items: center;
         height: min-content;
+        font-size: .9rem;
 
     }
     .typeIcon_container {

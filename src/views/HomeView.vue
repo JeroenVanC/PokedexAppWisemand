@@ -11,7 +11,8 @@
     </div>
     <div class="pinfoCar-container">
         <pInfoCard title="Mijn team" amount="4"></pInfoCard>
-        <pInfoCard title="Favorieten" amount="12" color="green"></pInfoCard>
+        <pInfoCard @click="$router.push('favorieten')" title="Favorieten" amount="12" color="green"></pInfoCard>
+
     </div>
     <div v-for="pokemon in searchResults" :key="pokemon.id">
       <router-link class="routerLink_pokeCard" :to="{ name: 'details', params: { name: pokemon.name, id: pokemon.id}}">
@@ -55,6 +56,7 @@ export default {
             .then(res => res.json())
             .then(data => this.pokemons = data)
             .catch(err => console.log(err.message))
+
   }
 }
 </script>

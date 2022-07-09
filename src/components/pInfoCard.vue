@@ -53,7 +53,7 @@ export default {
 
     .pInfo__container .text {
         margin: 5px 10px;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
     .pInfo__container .text p {
         margin: 0;
