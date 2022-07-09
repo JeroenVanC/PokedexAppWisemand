@@ -15,7 +15,8 @@
         </div>
 
         <h1>{{ name }}</h1>
-        <img :src="pokemon.sprites.front_default" :alt="name">
+        <!-- <img :src="pokemon.sprites.front_default" :alt="name"> -->
+        <img :src="imageSource" :alt="name">
 
         <p>INFO</p>
         <div class="aboutContainer">
@@ -41,7 +42,8 @@ export default {
         return {
             pokemon: null,
             cardInfo: {},
-            isFav: false
+            isFav: false,
+            imageSource: ""
         }
     },
     methods: {
@@ -72,6 +74,13 @@ export default {
             .then(data => this.pokemon = data)
             .catch(err => console.log(err.message))
 
+        fetch("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + this.id + ".png")
+            .then(res => res.blob())
+            .then(imageBlob => {
+                const imageObjectURL = URL.createObjectURL(imageBlob);
+                this.imageSource = imageObjectURL
+            })
+            .catch(err => console.log(err.message))
     },
     updated() {
         this.cardInfo = 
