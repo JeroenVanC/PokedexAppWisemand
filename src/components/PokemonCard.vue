@@ -3,7 +3,7 @@
         <div class="leftSide">
             <img :src="img" alt="">
             <div class="leftSideText">
-                <h3>{{ name }}</h3>
+                <h3>{{ name.charAt(0).toUpperCase() + name.slice(1) }}</h3>
                 <p class="pTitle">Nr. {{ formatNumber }}</p>
             </div>
         </div>

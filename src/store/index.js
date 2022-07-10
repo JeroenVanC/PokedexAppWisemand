@@ -4,7 +4,8 @@ export default createStore({
   state: {
     pokemons: [],
     favorites: [
-    ]
+    ],
+    team: []
   },
   getters: {
     getPokemons(state) {
@@ -31,7 +32,22 @@ export default createStore({
         if (index !== -1) {
           state.favorites.splice(index, 1)
         }
-    }
+    },
+    addToTeam(state, data){
+      state.team.push(data)
+      let uniqueItems = [...new Set(state.team)]
+      state.team = uniqueItems
+  },
+  deleteTeam(state, data){
+      let pokeNames = []
+      for (let p of state.team) {
+        pokeNames.push(p.name)
+      }
+      var index = pokeNames.indexOf(data)
+      if (index !== -1) {
+        state.team.splice(index, 1)
+      }
+  },
   },
   actions: {
     loadPokemon(state){
