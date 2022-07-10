@@ -51,7 +51,7 @@ export default {
       // the searchInput string
       // return this.getPokemons.filter(getPokemons => getPokemons.name.match(this.searchInput))
       if (Number.isInteger(parseInt(this.searchInput))) {
-        return this.getPokemons.filter(getPokemons => getPokemons.id.match(1))
+        return this.getPokemons.filter(getPokemons => getPokemons.id === parseInt(this.searchInput))
       }
       return this.getPokemons.filter(getPokemons => getPokemons.name.match(this.searchInput))
     },
