@@ -70,10 +70,12 @@
                     </div>
             </div>
         </div>
-        <button @click="addToTeam" class="addToTeamBtn">
-            <p v-if="isTeam">Verwijder van mijn team</p>
-            <p v-else>Toevoegen aan mijn team</p>
+        <div class="centerHorizontalContainer bottemBtnContainer">
+            <button @click="addToTeam" class="addToTeamBtn">
+                <p v-if="isTeam">Verwijder uit mijn team</p>
+                <p v-else>Toevoegen aan mijn team</p>
             </button>
+        </div>
     </div>
 </template>
 
@@ -305,10 +307,14 @@ export default {
         height: 10px;
     }
 
-    .addToTeamBtn {
+    .bottemBtnContainer{
         position: sticky;
         bottom: 10px;
         margin-top: 30px;
+    }
+
+    .addToTeamBtn {
+        
 
         width: 100%;
         border: none;
@@ -319,5 +325,6 @@ export default {
         font-size: 1.2rem;
         font-weight: bold;
         cursor: pointer;
+        max-width: 600px;
     }
 </style>
