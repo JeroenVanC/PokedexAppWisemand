@@ -26,9 +26,7 @@ export default createStore({
         for (let p of state.favorites) {
           pokeNames.push(p.name)
         }
-        console.log(pokeNames)
         var index = pokeNames.indexOf(data)
-        console.log(index)
         if (index !== -1) {
           state.favorites.splice(index, 1)
         }
@@ -51,7 +49,6 @@ export default createStore({
   },
   actions: {
     loadPokemon(state){
-      console.log("dispatched");
       fetch("https://stoplight.io/mocks/appwise-be/pokemon/57519009/pokemon")
             .then(res => res.json())
             .then((data) => {

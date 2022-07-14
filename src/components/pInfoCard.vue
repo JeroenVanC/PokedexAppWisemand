@@ -24,8 +24,6 @@ export default {
         }
     },
     mounted() {
-        
-
         // check for background gradient
         if (this.color === "green") {
             this.gradient = "pInfo__container-green"

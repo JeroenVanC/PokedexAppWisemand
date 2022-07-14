@@ -50,8 +50,6 @@ export default {
        },
     },
     mounted(){
-        //console.log(this.pokeTypes[0].type)
-        
     }
 }
 </script>

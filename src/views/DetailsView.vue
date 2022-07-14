@@ -15,7 +15,6 @@
         </div>
 
         <h1>{{ name.charAt(0).toUpperCase() + name.slice(1) }}</h1>
-        <!-- <img :src="pokemon.sprites.front_default" :alt="name"> -->
         <div class="pokemonImage" uk-lightbox>
             <a :href="imageSource">
                 <img :src="imageSource" :alt="name">
@@ -63,7 +62,6 @@
                         <p class="leftsideP">{{ stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1) }}</p>
                         <p>{{stat.base_stat}}</p>
                         <div class="progBarContainer">
-                            <!-- <p>{{ formatProgBarWidth(stat.base_stat) }}</p> -->
                             <div v-if="stat.base_stat > 50" class="progBar" :style="{background: greenProgBar , width : formatProgBarWidth(stat.base_stat)}"></div>
                             <div v-else class="progBar" :style="{background: redProgBar, width : formatProgBarWidth(stat.base_stat)}"></div>
                         </div>
